@@ -1,10 +1,15 @@
 🏁 Summary
 
-✅ Implemented full CRUD with DDD
-✅ Business rules for quantity-based discounts
-✅ SQLite integration
-✅ Angular frontend with reactive forms
-✅ Auto-calculation of totals and discounts
+✅ Implemented full CRUD with DDD  
+
+✅ Business rules for quantity-based discounts  
+
+✅ SQLite integration  
+
+✅ Angular frontend with reactive forms  
+
+✅ Auto-calculation of totals and discounts  
+
 ✅ Support for edit and cancel operations
 
 ## 🏗️ Architecture
