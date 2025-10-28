@@ -42,16 +42,17 @@ The backend follows **DDD (Domain-Driven Design)** principles:
 └── README.md
 
 ### 🖥️ Backend (.NET API)
-   cd developerstore/backend/DeveloperStore.Api
+    cd backend/DeveloperStore.Api
 
-   dotnet restore
-   dotnet run
+    dotnet restore
+    dotnet run
+    
+    👉 https://localhost:5132 or http://localhost:5132/swagger
 
-   👉 https://localhost:5132 or http://localhost:5132/swagger
+    cd backend/DeveloperStore.Tests
 
-   cd developerstore/backend/DeveloperStore.Tests
+    dotnet test
 
-   dotnet test
 
 ### 🖥️ Frontend (Angular)
     cd frontend/developerstore-ui

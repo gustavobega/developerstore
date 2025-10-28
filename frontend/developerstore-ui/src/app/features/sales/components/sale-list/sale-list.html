@@ -3,8 +3,8 @@
 
   <section class="form-section">
     <app-sale-form
-      [saleParaEdicao]="saleSelecionado"
-      (saleSalvo)="onSaleSalvo()"
+      [saleToEdit]="selectedSale"
+      (saleSaved)="onSaleSaved()"
     ></app-sale-form>
   </section>
 
@@ -34,7 +34,7 @@
           <td>{{ sale.totalAmount | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</td>
           <td>{{ sale.items.length || 0 }}</td>
           <td>
-            {{ calcularDescontoTotal(sale) | number:'1.0-2' }}%
+            {{ calculateTotalDiscount(sale) | number:'1.0-2' }}%
           </td>
           <td>
             <span [class.cancelled]="sale.isCancelled">
@@ -44,18 +44,16 @@
           <td>
             <button 
               class="edit-btn" 
-              (click)="editarSale(sale)" 
+              (click)="editSale(sale)" 
               [disabled]="sale.isCancelled"
-              [title]="sale.isCancelled ? 'Sale cancelled' : 'Edit sale'"
-            >
+              [title]="sale.isCancelled ? 'Sale cancelled' : 'Edit sale'">
               ✏️
             </button>
             <button 
               class="delete-btn" 
-              (click)="excluirSale(sale.id)" 
+              (click)="deleteSale(sale.id)" 
               [disabled]="sale.isCancelled"
-              [title]="sale.isCancelled ? 'Already cancelled' : 'Cancel sale'"
-            >
+              [title]="sale.isCancelled ? 'Already cancelled' : 'Cancel sale'">
               🗑️
             </button>
           </td>

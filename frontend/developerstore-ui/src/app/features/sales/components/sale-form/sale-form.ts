@@ -8,7 +8,7 @@ import {
   SimpleChanges,
   ChangeDetectorRef
 } from '@angular/core';
-import { CommonModule, CurrencyPipe  } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import {
   FormBuilder,
   FormGroup,
@@ -32,14 +32,14 @@ registerLocaleData(localePt);
   styleUrls: ['./sale-form.css']
 })
 export class SaleForm implements OnInit, OnChanges {
-  @Input() saleParaEdicao: Sale | null = null;
-  @Output() saleSalvo = new EventEmitter<void>();
+  @Input() saleToEdit: Sale | null = null;
+  @Output() saleSaved = new EventEmitter<void>();
 
   saleForm!: FormGroup;
 
   constructor(
     private fb: FormBuilder,
-    private saleService: SalesService,
+    private salesService: SalesService,
     private cdr: ChangeDetectorRef,
     private currencyPipe: CurrencyPipe
   ) {}
@@ -49,7 +49,7 @@ export class SaleForm implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if ('saleParaEdicao' in changes) {
+    if ('saleToEdit' in changes) {
       setTimeout(() => this.applyEditIfNeeded(), 0);
     }
   }
@@ -72,8 +72,8 @@ export class SaleForm implements OnInit, OnChanges {
     this.items.valueChanges.subscribe(() => this.recalculateAll());
   }
 
-  private applyEditIfNeeded() {
-    if (!this.saleParaEdicao) {
+  private applyEditIfNeeded(): void {
+    if (!this.saleToEdit) {
       this.saleForm.patchValue({
         id: 0,
         saleNumber: '',
@@ -86,7 +86,7 @@ export class SaleForm implements OnInit, OnChanges {
       return;
     }
 
-    const sale = this.saleParaEdicao;
+    const sale = this.saleToEdit;
     this.saleForm.patchValue({
       id: sale.id ?? 0,
       saleNumber: sale.saleNumber ?? '',
@@ -190,7 +190,7 @@ export class SaleForm implements OnInit, OnChanges {
 
   onUnitPriceInput(event: Event, index: number): void {
     const input = event.target as HTMLInputElement;
-    const rawValue = input.value.replace(/[^\d]/g, ''); // remove tudo que não é número
+    const rawValue = input.value.replace(/[^\d]/g, '');
     const numericValue = rawValue ? parseFloat(rawValue) / 100 : 0;
 
     const itemGroup = this.items.at(index);
@@ -239,7 +239,7 @@ export class SaleForm implements OnInit, OnChanges {
     }
 
     const payload = this.saleForm.getRawValue();
-    
+
     if (payload.date) {
       const d = new Date(payload.date);
       const pad = (n: number) => n.toString().padStart(2, '0');
@@ -251,22 +251,22 @@ export class SaleForm implements OnInit, OnChanges {
     }
 
     const obs = payload.id
-      ? this.saleService.update(payload)
-      : this.saleService.create(payload);
+      ? this.salesService.update(payload)
+      : this.salesService.create(payload);
 
     obs.subscribe({
       next: () => {
         this.saleForm.reset();
         this.items.clear();
         this.addItem();
-        this.saleSalvo.emit();
+        this.saleSaved.emit();
       },
-      error: (err) => console.error('Erro salvar:', err)
+      error: (err) => console.error('Error saving sale:', err)
     });
   }
 
   cancelEdit(): void {
-    this.saleParaEdicao = null;
+    this.saleToEdit = null;
     this.saleForm.reset();
     this.items.clear();
     this.addItem();
