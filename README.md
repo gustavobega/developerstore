@@ -28,12 +28,13 @@ The backend follows **DDD (Domain-Driven Design)** principles:
 | **Version Control** | Git & GitHub |
 | **IDE** | VS Code |
 
-## ⚙️ Project StructureDeveloperStore/
+## ⚙️ Project Structure
+DeveloperStore/
 ├── backend/
 │ ├── DeveloperStore.Api/ # API (Controllers & Startup)
 │ ├── DeveloperStore.Application/ # Use cases & DTOs
 │ ├── DeveloperStore.Domain/ # Entities, Interfaces & Rules
-│ ├── DeveloperStore.Infrastructure/ # Repositories, EF Core + SQLite
+│ ├── DeveloperStore.Infrastructure/# Repositories, EF Core + SQLite
 │ ├── DeveloperStore.Tests/ # Unit Test, Integration Test
 │
 ├── frontend/
