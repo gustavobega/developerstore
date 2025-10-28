@@ -32,15 +32,13 @@ The backend follows **DDD (Domain-Driven Design)** principles:
 
 DeveloperStore/
 ├── backend/
-│   ├── DeveloperStore.Api/           # API (Controllers & Startup)
+│   ├── DeveloperStore.Api/            # API (Controllers & Startup)
 │   ├── DeveloperStore.Application/   # Use cases & DTOs
 │   ├── DeveloperStore.Domain/        # Entities, Interfaces & Rules
 │   ├── DeveloperStore.Infrastructure/ # Repositories, EF Core + SQLite
-│   ├── DeveloperStore.Tests/         # Unit Test, Integration Test
-│
+│   └── DeveloperStore.Tests/         # Unit Test, Integration Test
 ├── frontend/
 │   └── developerstore-ui/            # Angular project (Forms + CRUD UI)
-│
 └── README.md
 
 ### 🖥️ Backend (.NET API)
