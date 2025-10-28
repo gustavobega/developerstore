@@ -1,0 +1,72 @@
+<div class="sales-page">
+  <h1>📊 Sales Management</h1>
+
+  <section class="form-section">
+    <app-sale-form
+      [saleParaEdicao]="saleSelecionado"
+      (saleSalvo)="onSaleSalvo()"
+    ></app-sale-form>
+  </section>
+
+  <section class="list-section">
+    <h2>🧾 Sales List</h2>
+
+    <table *ngIf="sales.length > 0; else noSales">
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Customer</th>
+          <th>Branch</th>
+          <th>Date</th>
+          <th>Total</th>
+          <th>Items Qty</th>
+          <th>Discount (%)</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sale of sales">
+          <td>{{ sale.saleNumber }}</td>
+          <td>{{ sale.customer }}</td>
+          <td>{{ sale.branch }}</td>
+          <td>{{ sale.date | date:'dd/MM/yyyy HH:mm' }}</td>
+          <td>{{ sale.totalAmount | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</td>
+          <td>{{ sale.items.length || 0 }}</td>
+          <td>
+            {{ calcularDescontoTotal(sale) | number:'1.0-2' }}%
+          </td>
+          <td>
+            <span [class.cancelled]="sale.isCancelled">
+              {{ sale.isCancelled ? 'Cancelled' : 'Active' }}
+            </span>
+          </td>
+          <td>
+            <button 
+              class="edit-btn" 
+              (click)="editarSale(sale)" 
+              [disabled]="sale.isCancelled"
+              [title]="sale.isCancelled ? 'Sale cancelled' : 'Edit sale'"
+            >
+              ✏️
+            </button>
+            <button 
+              class="delete-btn" 
+              (click)="excluirSale(sale.id)" 
+              [disabled]="sale.isCancelled"
+              [title]="sale.isCancelled ? 'Already cancelled' : 'Cancel sale'"
+            >
+              🗑️
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ng-template #noSales>
+      <p class="empty-message">
+        No sales registered at the moment. Start by adding a new one!
+      </p>
+    </ng-template>
+  </section>
+</div>

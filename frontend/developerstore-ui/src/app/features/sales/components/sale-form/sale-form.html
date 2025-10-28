@@ -1,0 +1,98 @@
+<form *ngIf="saleForm" [formGroup]="saleForm" (ngSubmit)="onSubmit()" class="sale-form">
+  <input type="hidden" formControlName="id" />
+
+  <div class="form-grid">
+    <div class="form-group">
+      <label>Sale Number</label>
+      <input type="text" formControlName="saleNumber" />
+    </div>
+
+    <div class="form-group">
+      <label>Customer</label>
+      <input type="text" formControlName="customer" />
+    </div>
+
+    <div class="form-group">
+      <label>Branch</label>
+      <input type="text" formControlName="branch" />
+    </div>
+
+    <div class="form-group">
+      <label>Date</label>
+      <input type="datetime-local" formControlName="date" />
+    </div>
+
+    <div class="form-group">
+      <label>Total Amount</label>
+      <input
+        type="text"
+        [value]="formatCurrency(saleForm.get('totalAmount')?.value)"
+        class="total-amount-input"
+        readonly
+      />
+    </div>
+  </div>
+
+  <div class="discount-info">
+    <h4>Discount Rules:</h4>
+    <ul>
+      <li><strong>1 to 3 units</strong>: <strong>no discount</strong></li>
+      <li><strong>4 to 9 units</strong>: <strong>10%</strong> discount</li>
+      <li><strong>10 to 20 units</strong>: <strong>20%</strong> discount</li>
+    </ul>
+  </div>
+
+  <div formArrayName="items" class="items-section">
+    <div *ngFor="let itemCtrl of items.controls; let i = index" [formGroupName]="i" class="item-card">
+      <div class="item-header">
+        <h4>Item {{ i + 1 }}</h4>
+        <button type="button" class="remove-btn" (click)="removeItem(i)">×</button>
+      </div>
+
+      <div class="item-grid">
+        <div class="form-group">
+          <label>Product</label>
+          <input type="text" formControlName="product" />
+        </div>
+
+        <div class="form-group">
+          <label>Quantity</label>
+          <input type="number" formControlName="quantity" min="1" />
+        </div>
+
+        <div class="form-group">
+          <label>Unit Price</label>
+          <input
+            type="text"
+            [value]="formatCurrency(items.at(i).get('unitPrice')?.value)"
+            (input)="onUnitPriceInput($event, i)"
+            class="currency-input"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Discount</label>
+          <input type="number" formControlName="discount" />
+        </div>
+
+        <div class="form-group">
+          <label>Total</label>
+          <input
+            type="text"
+            [value]="formatCurrency(items.at(i).get('total')?.value)"
+            readonly
+            class="total-input"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions-row">
+    <button type="button" (click)="addItem()">+ Add Item</button>
+    <div>
+      <button type="submit" [disabled]="saleForm.invalid">Save Sale</button>
+      <button type="button" (click)="cancelEdit()">Cancel</button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,17 @@
+C:\Projects\DeveloperStore\backend\DeveloperStore.Infrastructure\bin\Debug\net9.0\DeveloperStore.Infrastructure.deps.json
+C:\Projects\DeveloperStore\backend\DeveloperStore.Infrastructure\bin\Debug\net9.0\DeveloperStore.Infrastructure.dll
+C:\Projects\DeveloperStore\backend\DeveloperStore.Infrastructure\bin\Debug\net9.0\DeveloperStore.Infrastructure.pdb
+C:\Projects\DeveloperStore\backend\DeveloperStore.Infrastructure\bin\Debug\net9.0\DeveloperStore.Domain.dll
+C:\Projects\DeveloperStore\backend\DeveloperStore.Infrastructure\bin\Debug\net9.0\DeveloperStore.Domain.pdb
+C:\Projects\DeveloperStore\backend\DeveloperStore.Infrastructure\obj\Debug\net9.0\DeveloperStore.Infrastructure.csproj.AssemblyReference.cache
+C:\Projects\DeveloperStore\backend\DeveloperStore.Infrastructure\obj\Debug\net9.0\DeveloperStore.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\DeveloperStore\backend\DeveloperStore.Infrastructure\obj\Debug\net9.0\DeveloperStore.Infrastructure.AssemblyInfoInputs.cache
+C:\Projects\DeveloperStore\backend\DeveloperStore.Infrastructure\obj\Debug\net9.0\DeveloperStore.Infrastructure.AssemblyInfo.cs
+C:\Projects\DeveloperStore\backend\DeveloperStore.Infrastructure\obj\Debug\net9.0\DeveloperStore.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Projects\DeveloperStore\backend\DeveloperStore.Infrastructure\obj\Debug\net9.0\Develope.BF41ECEB.Up2Date
+C:\Projects\DeveloperStore\backend\DeveloperStore.Infrastructure\obj\Debug\net9.0\DeveloperStore.Infrastructure.dll
+C:\Projects\DeveloperStore\backend\DeveloperStore.Infrastructure\obj\Debug\net9.0\refint\DeveloperStore.Infrastructure.dll
+C:\Projects\DeveloperStore\backend\DeveloperStore.Infrastructure\obj\Debug\net9.0\DeveloperStore.Infrastructure.pdb
+C:\Projects\DeveloperStore\backend\DeveloperStore.Infrastructure\obj\Debug\net9.0\ref\DeveloperStore.Infrastructure.dll
+C:\Projects\DeveloperStore\backend\DeveloperStore.Infrastructure\bin\Debug\net9.0\DeveloperStore.Infrastructure.runtimeconfig.json
+C:\Projects\DeveloperStore\backend\DeveloperStore.Infrastructure\obj\Debug\net9.0\DeveloperStore.Infrastructure.genruntimeconfig.cache
