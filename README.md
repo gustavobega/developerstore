@@ -1,10 +1,15 @@
 🏁 Summary
 
-✅ Implemented full CRUD with DDD
-✅ Business rules for quantity-based discounts
-✅ SQLite integration
-✅ Angular frontend with reactive forms
-✅ Auto-calculation of totals and discounts
+✅ Implemented full CRUD with DDD  
+
+✅ Business rules for quantity-based discounts  
+
+✅ SQLite integration  
+
+✅ Angular frontend with reactive forms  
+
+✅ Auto-calculation of totals and discounts  
+
 ✅ Support for edit and cancel operations
 
 ## 🏗️ Architecture
@@ -28,17 +33,17 @@ The backend follows **DDD (Domain-Driven Design)** principles:
 | **Version Control** | Git & GitHub |
 | **IDE** | VS Code |
 
-## ⚙️ Project StructureDeveloperStore/
+## ⚙️ Project Structure
+
+DeveloperStore/
 ├── backend/
-│ ├── DeveloperStore.Api/ # API (Controllers & Startup)
-│ ├── DeveloperStore.Application/ # Use cases & DTOs
-│ ├── DeveloperStore.Domain/ # Entities, Interfaces & Rules
-│ ├── DeveloperStore.Infrastructure/ # Repositories, EF Core + SQLite
-│ ├── DeveloperStore.Tests/ # Unit Test, Integration Test
-│
+│   ├── DeveloperStore.Api/            # API (Controllers & Startup)
+│   ├── DeveloperStore.Application/   # Use cases & DTOs
+│   ├── DeveloperStore.Domain/        # Entities, Interfaces & Rules
+│   ├── DeveloperStore.Infrastructure/ # Repositories, EF Core + SQLite
+│   └── DeveloperStore.Tests/         # Unit Test, Integration Test
 ├── frontend/
-│ └── developerstore-ui/ # Angular project (Forms + CRUD UI)
-│
+│   └── developerstore-ui/            # Angular project (Forms + CRUD UI)
 └── README.md
 
 ### 🖥️ Backend (.NET API)
