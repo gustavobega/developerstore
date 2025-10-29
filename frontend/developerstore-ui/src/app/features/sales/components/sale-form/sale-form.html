@@ -1,25 +1,38 @@
 <form *ngIf="saleForm" [formGroup]="saleForm" (ngSubmit)="onSubmit()" class="sale-form">
   <input type="hidden" formControlName="id" />
 
+  <!-- Informações principais -->
   <div class="form-grid">
-    <div class="form-group">
+    <div class="form-group" [class.invalid]="saleForm.get('saleNumber')?.invalid && saleForm.get('saleNumber')?.touched">
       <label>Sale Number</label>
       <input type="text" formControlName="saleNumber" />
+      <small *ngIf="saleForm.get('saleNumber')?.errors?.['required'] && saleForm.get('saleNumber')?.touched">
+        Required field
+      </small>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" [class.invalid]="saleForm.get('customer')?.invalid && saleForm.get('customer')?.touched">
       <label>Customer</label>
       <input type="text" formControlName="customer" />
+      <small *ngIf="saleForm.get('customer')?.errors?.['required'] && saleForm.get('customer')?.touched">
+        Required field
+      </small>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" [class.invalid]="saleForm.get('branch')?.invalid && saleForm.get('branch')?.touched">
       <label>Branch</label>
       <input type="text" formControlName="branch" />
+      <small *ngIf="saleForm.get('branch')?.errors?.['required'] && saleForm.get('branch')?.touched">
+        Required field
+      </small>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" [class.invalid]="saleForm.get('date')?.invalid && saleForm.get('date')?.touched">
       <label>Date</label>
       <input type="datetime-local" formControlName="date" />
+      <small *ngIf="saleForm.get('date')?.errors?.['required'] && saleForm.get('date')?.touched">
+        Required field
+      </small>
     </div>
 
     <div class="form-group">
@@ -33,6 +46,7 @@
     </div>
   </div>
 
+  <!-- Regras de desconto -->
   <div class="discount-info">
     <h4>Discount Rules:</h4>
     <ul>
@@ -42,6 +56,7 @@
     </ul>
   </div>
 
+  <!-- Itens -->
   <div formArrayName="items" class="items-section">
     <div *ngFor="let itemCtrl of items.controls; let i = index" [formGroupName]="i" class="item-card">
       <div class="item-header">
@@ -50,17 +65,35 @@
       </div>
 
       <div class="item-grid">
-        <div class="form-group">
+        <div class="form-group" [class.invalid]="itemCtrl.get('product')?.invalid && itemCtrl.get('product')?.touched">
           <label>Product</label>
           <input type="text" formControlName="product" />
+          <small *ngIf="itemCtrl.get('product')?.errors?.['required'] && itemCtrl.get('product')?.touched">
+            Required field
+          </small>
         </div>
 
-        <div class="form-group">
+        <div
+          class="form-group"
+          [class.invalid]="itemCtrl.get('quantity')?.invalid && itemCtrl.get('quantity')?.touched"
+        >
           <label>Quantity</label>
-          <input type="number" formControlName="quantity" min="1" />
+          <input type="number" formControlName="quantity" min="1" max="20" />
+          <small *ngIf="itemCtrl.get('quantity')?.errors?.['required'] && itemCtrl.get('quantity')?.touched">
+            Required field
+          </small>
+          <small *ngIf="itemCtrl.get('quantity')?.errors?.['min'] && itemCtrl.get('quantity')?.touched">
+            Minimum quantity is 1
+          </small>
+          <small *ngIf="itemCtrl.get('quantity')?.errors?.['max'] && itemCtrl.get('quantity')?.touched">
+            Maximum quantity allowed is 20
+          </small>
         </div>
 
-        <div class="form-group">
+        <div
+          class="form-group"
+          [class.invalid]="itemCtrl.get('unitPrice')?.invalid && itemCtrl.get('unitPrice')?.touched"
+        >
           <label>Unit Price</label>
           <input
             type="text"
@@ -68,11 +101,17 @@
             (input)="onUnitPriceInput($event, i)"
             class="currency-input"
           />
+          <small *ngIf="itemCtrl.get('unitPrice')?.errors?.['required'] && itemCtrl.get('unitPrice')?.touched">
+            Required field
+          </small>
+          <small *ngIf="itemCtrl.get('unitPrice')?.errors?.['min'] && itemCtrl.get('unitPrice')?.touched">
+            Must be greater than zero
+          </small>
         </div>
 
         <div class="form-group">
           <label>Discount</label>
-          <input type="number" formControlName="discount" />
+          <input type="number" formControlName="discount" readonly />
         </div>
 
         <div class="form-group">
@@ -88,11 +127,17 @@
     </div>
   </div>
 
+  <!-- Botões -->
   <div class="actions-row">
     <button type="button" (click)="addItem()">+ Add Item</button>
     <div>
       <button type="submit" [disabled]="saleForm.invalid">Save Sale</button>
       <button type="button" (click)="cancelEdit()">Cancel</button>
     </div>
+  </div>
+
+  <!-- Mensagem de erro geral -->
+  <div *ngIf="saleForm.invalid && saleForm.touched" class="error-message">
+    Please fix the highlighted errors before saving the sale.
   </div>
 </form>
