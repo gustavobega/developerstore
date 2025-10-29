@@ -54,9 +54,6 @@ namespace DeveloperStore.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] SaleDto saleDto)
         {
-            string json = JsonSerializer.Serialize(saleDto, new JsonSerializerOptions { WriteIndented = true });
-            Console.WriteLine("Created SaleDto JSON:\n" + json);
-
             var sale = _mapper.Map<Sale>(saleDto);
 
             var createdSale = await _createSaleUseCase.ExecuteAsync(sale);
