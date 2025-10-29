@@ -81,6 +81,7 @@ export class SaleForm implements OnInit, OnChanges {
         branch: '',
         date: new Date()
       });
+      this.saleForm.get('saleNumber')?.enable();
       if (this.items.length === 0) this.addItem();
       this.cdr.markForCheck();
       return;
@@ -95,12 +96,15 @@ export class SaleForm implements OnInit, OnChanges {
       date: sale.date ?? new Date()
     });
 
+    this.saleForm.get('saleNumber')?.disable();
+
     this.items.clear();
 
     if (sale.items && sale.items.length) {
       for (const it of sale.items) {
         const g = this.createItemGroup();
         g.patchValue({
+          id: it.id,
           product: it.product,
           quantity: it.quantity,
           unitPrice: it.unitPrice,
@@ -125,6 +129,7 @@ export class SaleForm implements OnInit, OnChanges {
 
   private createItemGroup(): FormGroup {
     const g = this.fb.group({
+      id: [],
       product: ['', Validators.required],
       quantity: [1, [Validators.required, Validators.min(1), Validators.max(20)]],
       unitPrice: [0.01, [Validators.required, Validators.min(0.01)]],
@@ -246,7 +251,17 @@ export class SaleForm implements OnInit, OnChanges {
       payload.date = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
     }
 
-    if (!payload.id || payload.id === 0) {
+    const isCreate = !payload.id || payload.id === 0;
+
+    if (payload.items && Array.isArray(payload.items)) {
+      payload.items.forEach((item: any) => {
+        if (isCreate || item.id === null) {
+          delete item.id;
+        }
+      });
+    }
+
+    if (isCreate) {
       delete payload.id;
     }
 
@@ -259,6 +274,7 @@ export class SaleForm implements OnInit, OnChanges {
         this.saleForm.reset();
         this.items.clear();
         this.addItem();
+        this.saleForm.get('saleNumber')?.enable();
         this.saleSaved.emit();
       },
       error: (err) => console.error('Error saving sale:', err)
@@ -270,6 +286,7 @@ export class SaleForm implements OnInit, OnChanges {
     this.saleForm.reset();
     this.items.clear();
     this.addItem();
+    this.saleForm.get('saleNumber')?.enable();
     this.cdr.detectChanges();
   }
 }

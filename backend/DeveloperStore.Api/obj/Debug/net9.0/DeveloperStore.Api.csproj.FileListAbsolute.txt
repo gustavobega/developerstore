@@ -34,10 +34,6 @@ C:\Projects\DeveloperStore\backend\DeveloperStore.Api\bin\Debug\net9.0\Microsoft
 C:\Projects\DeveloperStore\backend\DeveloperStore.Api\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Projects\DeveloperStore\backend\DeveloperStore.Api\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
 C:\Projects\DeveloperStore\backend\DeveloperStore.Api\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll
-C:\Projects\DeveloperStore\backend\DeveloperStore.Api\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
-C:\Projects\DeveloperStore\backend\DeveloperStore.Api\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\Projects\DeveloperStore\backend\DeveloperStore.Api\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
-C:\Projects\DeveloperStore\backend\DeveloperStore.Api\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
 C:\Projects\DeveloperStore\backend\DeveloperStore.Api\bin\Debug\net9.0\Microsoft.OpenApi.dll
 C:\Projects\DeveloperStore\backend\DeveloperStore.Api\bin\Debug\net9.0\Mono.TextTemplating.dll
 C:\Projects\DeveloperStore\backend\DeveloperStore.Api\bin\Debug\net9.0\SQLitePCLRaw.batteries_v2.dll
@@ -167,4 +163,5 @@ C:\Projects\DeveloperStore\backend\DeveloperStore.Api\obj\Debug\net9.0\Developer
 C:\Projects\DeveloperStore\backend\DeveloperStore.Api\obj\Debug\net9.0\DeveloperStore.Api.genruntimeconfig.cache
 C:\Projects\DeveloperStore\backend\DeveloperStore.Api\obj\Debug\net9.0\ref\DeveloperStore.Api.dll
 C:\Projects\DeveloperStore\backend\DeveloperStore.Api\bin\Debug\net9.0\package-lock.json
-C:\Projects\DeveloperStore\backend\DeveloperStore.API\obj\Debug\net9.0\Develope.F8963EC8.Up2Date
+C:\Projects\DeveloperStore\backend\DeveloperStore.Api\obj\Debug\net9.0\DeveloperStore.Api.sourcelink.json
+C:\Projects\DeveloperStore\backend\DeveloperStore.Api\obj\Debug\net9.0\Develope.78B59DA8.Up2Date

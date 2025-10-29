@@ -17,3 +17,4 @@ C:\Projects\DeveloperStore\backend\DeveloperStore.Application\bin\Debug\net9.0\D
 C:\Projects\DeveloperStore\backend\DeveloperStore.Application\bin\Debug\net9.0\DeveloperStore.Infrastructure.dll
 C:\Projects\DeveloperStore\backend\DeveloperStore.Application\bin\Debug\net9.0\DeveloperStore.Infrastructure.pdb
 C:\Projects\DeveloperStore\backend\DeveloperStore.Application\obj\Debug\net9.0\DeveloperStore.Application.genruntimeconfig.cache
+C:\Projects\DeveloperStore\backend\DeveloperStore.Application\obj\Debug\net9.0\DeveloperStore.Application.sourcelink.json

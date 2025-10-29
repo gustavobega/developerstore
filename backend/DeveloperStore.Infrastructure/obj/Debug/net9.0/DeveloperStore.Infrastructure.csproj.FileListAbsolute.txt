@@ -15,3 +15,4 @@ C:\Projects\DeveloperStore\backend\DeveloperStore.Infrastructure\obj\Debug\net9.
 C:\Projects\DeveloperStore\backend\DeveloperStore.Infrastructure\obj\Debug\net9.0\ref\DeveloperStore.Infrastructure.dll
 C:\Projects\DeveloperStore\backend\DeveloperStore.Infrastructure\bin\Debug\net9.0\DeveloperStore.Infrastructure.runtimeconfig.json
 C:\Projects\DeveloperStore\backend\DeveloperStore.Infrastructure\obj\Debug\net9.0\DeveloperStore.Infrastructure.genruntimeconfig.cache
+C:\Projects\DeveloperStore\backend\DeveloperStore.Infrastructure\obj\Debug\net9.0\DeveloperStore.Infrastructure.sourcelink.json

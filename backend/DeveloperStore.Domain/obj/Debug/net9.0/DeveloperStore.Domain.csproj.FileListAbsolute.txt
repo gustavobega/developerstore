@@ -9,3 +9,4 @@ C:\Projects\DeveloperStore\backend\DeveloperStore.Domain\obj\Debug\net9.0\Develo
 C:\Projects\DeveloperStore\backend\DeveloperStore.Domain\obj\Debug\net9.0\refint\DeveloperStore.Domain.dll
 C:\Projects\DeveloperStore\backend\DeveloperStore.Domain\obj\Debug\net9.0\DeveloperStore.Domain.pdb
 C:\Projects\DeveloperStore\backend\DeveloperStore.Domain\obj\Debug\net9.0\ref\DeveloperStore.Domain.dll
+C:\Projects\DeveloperStore\backend\DeveloperStore.Domain\obj\Debug\net9.0\DeveloperStore.Domain.sourcelink.json

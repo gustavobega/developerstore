@@ -15,6 +15,7 @@ namespace DeveloperStore.Api.Extensions
             services.AddScoped<CancelSaleUseCase>();
 
             services.AddScoped<ISaleRepository, SaleRepository>();
+            services.AddAutoMapper(typeof(SaleProfile));
 
             return services;
         }

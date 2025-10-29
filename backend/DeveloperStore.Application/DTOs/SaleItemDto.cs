@@ -1,4 +1,4 @@
-namespace DeveloperStore.API.DTOs
+namespace DeveloperStore.Application.DTOs
 {
     public class SaleItemDto
     {

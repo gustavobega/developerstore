@@ -1,7 +1,9 @@
-using DeveloperStore.API.DTOs;
+using DeveloperStore.Application.DTOs;
 using DeveloperStore.Application.UseCases.Sales;
 using DeveloperStore.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
+using AutoMapper;
+using System.Text.Json;
 
 namespace DeveloperStore.Api.Controllers
 {
@@ -14,19 +16,22 @@ namespace DeveloperStore.Api.Controllers
         private readonly GetAllSalesUseCase _getAllSalesUseCase;
         private readonly UpdateSaleUseCase _updateSaleUseCase;
         private readonly CancelSaleUseCase _cancelSaleUseCase;
+        private readonly IMapper _mapper;
 
         public SalesController(
             CreateSaleUseCase createSaleUseCase,
             GetSaleByIdUseCase getSaleByIdUseCase,
             GetAllSalesUseCase getAllSalesUseCase,
             UpdateSaleUseCase updateSaleUseCase,
-            CancelSaleUseCase cancelSaleUseCase)
+            CancelSaleUseCase cancelSaleUseCase,
+            IMapper mapper)
         {
             _createSaleUseCase = createSaleUseCase;
             _getSaleByIdUseCase = getSaleByIdUseCase;
             _getAllSalesUseCase = getAllSalesUseCase;
             _updateSaleUseCase = updateSaleUseCase;
             _cancelSaleUseCase = cancelSaleUseCase;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -49,21 +54,10 @@ namespace DeveloperStore.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] SaleDto saleDto)
         {
-            var sale = new Sale(saleDto.SaleNumber, saleDto.Customer, saleDto.Branch, saleDto.Date);
+            string json = JsonSerializer.Serialize(saleDto, new JsonSerializerOptions { WriteIndented = true });
+            Console.WriteLine("Created SaleDto JSON:\n" + json);
 
-            foreach (var itemDto in saleDto.Items)
-            {
-                var item = new SaleItem(
-                    product: itemDto.Product,
-                    quantity: itemDto.Quantity,
-                    unitPrice: itemDto.UnitPrice
-                )
-                {
-                    SaleId = sale.Id
-                };
-                
-                sale.AddItem(item);
-            }
+            var sale = _mapper.Map<Sale>(saleDto);
 
             var createdSale = await _createSaleUseCase.ExecuteAsync(sale);
 
@@ -76,20 +70,10 @@ namespace DeveloperStore.Api.Controllers
             if (id != saleDto.Id)
                 return BadRequest("Id da URL diferente do Id da venda.");
 
-            var sale = new Sale((Guid)saleDto.Id, saleDto.SaleNumber, saleDto.Customer, saleDto.Branch, saleDto.Date);
-
-            foreach (var itemDto in saleDto.Items)
+            var sale = _mapper.Map<Sale>(saleDto);
+            foreach (var item in sale.Items)
             {
-                var saleItem = new SaleItem(
-                    itemDto.Product,
-                    itemDto.Quantity,
-                    itemDto.UnitPrice
-                )
-                {
-                    Id = itemDto.Id
-                };
-
-                sale.AddItem(saleItem);
+                item.SaleId = sale.Id;
             }
 
             var updatedSale = await _updateSaleUseCase.ExecuteAsync(sale);

@@ -10,8 +10,7 @@ namespace DeveloperStore.Domain.Entities
         public decimal TotalAmount { get; private set; }
         public bool IsCancelled { get; private set; } = false;
 
-        private readonly List<SaleItem> _items = new List<SaleItem>();
-        public IReadOnlyList<SaleItem> Items => _items.AsReadOnly();
+        public List<SaleItem> Items { get; set; } = new List<SaleItem>();
         
         public Sale(string saleNumber, string customer, string branch, DateTime date)
         {
@@ -32,19 +31,19 @@ namespace DeveloperStore.Domain.Entities
 
         public void AddItem(SaleItem item)
         {
-            _items.Add(item);
+            Items.Add(item);
             RecalculateTotal();
         }
 
         public void RemoveItem(SaleItem item)
         {
-            _items.Remove(item);
+            Items.Remove(item);
             RecalculateTotal();
         }
 
         public void RecalculateTotal()
         {
-            TotalAmount = _items.Sum(i => i.Total);
+            TotalAmount = Items.Sum(i => i.Total);
         }
 
         public void Cancel()
